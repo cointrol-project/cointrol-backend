@@ -1,4 +1,4 @@
-package com.fcproject.application.usecases.users;
+package com.fcproject.domain.ports.inbound;
 
 import com.fcproject.domain.models.users.UserDomain;
 
