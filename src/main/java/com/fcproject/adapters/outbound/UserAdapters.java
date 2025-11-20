@@ -1,19 +1,19 @@
-package com.fcproject.adapters.outbound.repositoriesImpl;
+package com.fcproject.adapters.outbound;
 
 import com.fcproject.adapters.outbound.entities.users.UserMapper;
-import com.fcproject.adapters.outbound.repositories.UserJPARepository;
-import com.fcproject.domain.models.users.UserDomain;
-import com.fcproject.domain.ports.outbound.UserRepositoryOut;
+import com.fcproject.adapters.outbound.persistence.UserJPARepository;
+import com.fcproject.application.core.domain.users.UserDomain;
+import com.fcproject.application.ports.outbound.UserRepositoryOut;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
 
 @Slf4j
-public class UserRepositoryImpl implements UserRepositoryOut {
+public class UserAdapters implements UserRepositoryOut {
 
     private final UserJPARepository userRepository;
 
-    private UserRepositoryImpl(UserJPARepository userRepository) {
+    private UserAdapters(UserJPARepository userRepository) {
         this.userRepository = userRepository;
     }
 

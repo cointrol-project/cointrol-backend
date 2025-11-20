@@ -4,7 +4,7 @@ package com.fcproject.adapters.outbound.entities.users;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.fcproject.domain.enums.Gender;
+import com.fcproject.application.core.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,9 +30,6 @@ public class UserEntity {
     @Column(nullable = false, unique = true, length = 250)
     private String email;
 
-    @Column(nullable = false, length = 128)
-    private String password;
-
     @Column(name="phone_number", length = 20)
     private String phone;
 
@@ -43,5 +40,23 @@ public class UserEntity {
     @Column(name="date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
+    @Column(name = "password")
+    private String password_hash;
 
+    @Column(name = "created_at")
+    private LocalDate created_at;
+
+    @Column(name = "update_at")
+    private LocalDate update_at;
+
+    public UserEntity(UUID id, String firstName, String lastName, String email, String phone, Gender gender, LocalDate dateOfBirth, String password_hash) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.password_hash = password_hash;
+    }
 }

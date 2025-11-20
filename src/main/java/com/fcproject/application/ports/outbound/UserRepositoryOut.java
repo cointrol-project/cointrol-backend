@@ -1,6 +1,6 @@
-package com.fcproject.domain.ports.outbound;
+package com.fcproject.application.ports.outbound;
 
-import com.fcproject.domain.models.users.UserDomain;
+import com.fcproject.application.core.domain.users.UserDomain;
 
 import java.util.UUID;
 

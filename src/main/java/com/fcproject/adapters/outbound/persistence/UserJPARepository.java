@@ -1,4 +1,4 @@
-package com.fcproject.adapters.outbound.repositories;
+package com.fcproject.adapters.outbound.persistence;
 
 import com.fcproject.adapters.outbound.entities.users.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

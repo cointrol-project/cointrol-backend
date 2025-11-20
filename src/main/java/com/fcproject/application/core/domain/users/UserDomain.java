@@ -1,8 +1,6 @@
-package com.fcproject.domain.models.users;
+package com.fcproject.application.core.domain.users;
 
-import com.fcproject.domain.enums.Gender;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import com.fcproject.application.core.enums.Gender;
 
 import java.time.LocalDate;
 import java.util.UUID;

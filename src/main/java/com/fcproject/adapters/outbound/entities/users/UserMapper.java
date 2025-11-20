@@ -1,6 +1,6 @@
 package com.fcproject.adapters.outbound.entities.users;
 
-import com.fcproject.domain.models.users.UserDomain;
+import com.fcproject.application.core.domain.users.UserDomain;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
@@ -16,7 +16,7 @@ public class UserMapper {
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
-                entity.getPassword(),
+                entity.getPassword_hash(),
                 entity.getPhone(),
                 entity.getGender(),
                 entity.getDateOfBirth()
@@ -33,10 +33,10 @@ public class UserMapper {
                 domain.getFirstName(),
                 domain.getLastName(),
                 domain.getEmail(),
-                domain.getPassword(),
                 domain.getPhone(),
                 domain.getGender(),
-                domain.getDateOfBirth()
+                domain.getDateOfBirth(),
+                domain.getPassword()
         );
     }
 }

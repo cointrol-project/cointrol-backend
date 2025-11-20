@@ -2,7 +2,7 @@ package com.fcproject.adapters.inbound.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fcproject.domain.enums.Gender;
+import com.fcproject.application.core.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.fcproject.domain.enums;
+package com.fcproject.application.core.enums;
 
 public enum Gender {
     MALE,
