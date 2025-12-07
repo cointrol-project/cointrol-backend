@@ -18,12 +18,11 @@ public class UserDomain {
     public UserDomain() {
     }
 
-    public UserDomain(UUID id, String firstName, String lastName, String email, String password, String phone, Gender gender, LocalDate dateOfBirth) {
+    public UserDomain(UUID id, String firstName, String lastName, String email, String phone, Gender gender, LocalDate dateOfBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;

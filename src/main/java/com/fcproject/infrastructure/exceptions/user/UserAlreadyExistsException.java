@@ -1,4 +1,4 @@
-package com.fcproject.infrastructure.exceptions;
+package com.fcproject.infrastructure.exceptions.user;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

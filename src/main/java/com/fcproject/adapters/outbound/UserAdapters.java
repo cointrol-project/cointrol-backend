@@ -5,6 +5,7 @@ import com.fcproject.adapters.outbound.persistence.UserJPARepository;
 import com.fcproject.application.core.domain.users.UserDomain;
 import com.fcproject.application.ports.outbound.UserOutPort;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.UUID;
 
@@ -21,20 +22,21 @@ public class UserAdapters implements UserOutPort {
     @Override
     public UserDomain findByEmail(String email) {
 
-        log.info("Find user by email: {}", email);
+        log.info("Searching user by email: {}", email);
         return UserMapper.toDomain(userRepository.findByEmail(email).orElse(null));
     }
 
     @Override
     public void save(UserDomain user) {
-        log.info("Save user: {}", user);
+        log.info("Saving user: {}", user);
         userRepository.save(UserMapper.toEntity(user));
     }
+
 
     @Override
     public UserDomain findById(UUID id) {
 
-        log.info("Find user by ID: {}", id);
+        log.info("Searching user by ID: {}", id);
         return UserMapper.toDomain(userRepository.findById(id).orElse(null));
     }
 }

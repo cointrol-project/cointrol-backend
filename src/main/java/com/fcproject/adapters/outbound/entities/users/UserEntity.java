@@ -69,6 +69,16 @@ public class UserEntity implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles = new HashSet<>();
 
+    public UserEntity(String firstName, String lastName, String email, String phone, Gender gender, LocalDate dateOfBirth, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.password_hash = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -76,31 +86,42 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return this.password_hash;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return this.firstName + " " + this.lastName;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return this.accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return this.accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return this.credentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return this.enabled;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof UserEntity that)) return false;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPhone(), that.getPhone()) && getGender() == that.getGender() && Objects.equals(getDateOfBirth(), that.getDateOfBirth()) && Objects.equals(getPassword_hash(), that.getPassword_hash()) && Objects.equals(getCreated_at(), that.getCreated_at()) && Objects.equals(getUpdate_at(), that.getUpdate_at()) && Objects.equals(isAccountNonExpired(), that.isAccountNonExpired()) && Objects.equals(isAccountNonLocked(), that.isAccountNonLocked()) && Objects.equals(isCredentialsNonExpired(), that.isCredentialsNonExpired()) && Objects.equals(isEnabled(), that.isEnabled()) && Objects.equals(getRoles(), that.getRoles());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getGender(), getDateOfBirth(), getPassword_hash(), getCreated_at(), getUpdate_at(), isAccountNonExpired(), isAccountNonLocked(), isCredentialsNonExpired(), isEnabled(), getRoles());
     }
 }

@@ -1,6 +1,10 @@
 package com.fcproject.infrastructure.exceptions;
 
 
+import com.fcproject.infrastructure.exceptions.global.DataNotFound;
+import com.fcproject.infrastructure.exceptions.global.InvalidValueException;
+import com.fcproject.infrastructure.exceptions.global.NotAllFieldsFilledException;
+import com.fcproject.infrastructure.exceptions.user.UserAlreadyExistsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -27,12 +31,14 @@ public class GlobalHanlder extends ResponseEntityExceptionHandler {
                 request.getDescription(false)
         );
 
-        logger.error("Erro interno de servidor {}", ex.getMessage());
+        logger.error("Internal Server Error {}", ex.getMessage());
         return new ResponseEntity<>(exResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(NotAllFieldsFilledException.class)
-    public final ResponseEntity<ExceptionResponse> handleNotAllFieldsFilledException(NotAllFieldsFilledException ex, WebRequest request) {
+    @ExceptionHandler({
+            NotAllFieldsFilledException.class,
+            InvalidValueException.class,})
+    public final ResponseEntity<ExceptionResponse> handleInvalidField(Exception ex, WebRequest request) {
         ExceptionResponse exResponse = new ExceptionResponse(
                 new Date(),
                 ex.getMessage(),
@@ -50,11 +56,12 @@ public class GlobalHanlder extends ResponseEntityExceptionHandler {
                 request.getDescription(false)
         );
 
-        return new ResponseEntity<>(exResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(exResponse, HttpStatus.CONFLICT);
     }
 
+
     @ExceptionHandler(DataNotFound.class)
-    public final ResponseEntity<ExceptionResponse> handleUserAlreadyExistsException(DataNotFound ex, HttpStatus status, WebRequest request) {
+    public final ResponseEntity<ExceptionResponse> handleDataNotFound(DataNotFound ex, HttpStatus status, WebRequest request) {
 
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }

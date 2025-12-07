@@ -1,13 +1,15 @@
 package com.fcproject.application.core.usecases.users;
 
 import com.fcproject.application.core.domain.users.UserDomain;
-import com.fcproject.application.ports.inbound.SaveNewUserInPort;
+import com.fcproject.application.ports.inbound.userPorts.SaveNewUserInPort;
 import com.fcproject.application.ports.outbound.UserOutPort;
-import com.fcproject.infrastructure.exceptions.NotAllFieldsFilledException;
-import com.fcproject.infrastructure.exceptions.UserAlreadyExistsException;
+import com.fcproject.infrastructure.exceptions.global.NotAllFieldsFilledException;
+import com.fcproject.infrastructure.exceptions.user.UserAlreadyExistsException;
+
+import static com.fcproject.application.core.utils.UserValidationUtil.emailValidationUtil;
+import static com.fcproject.application.core.utils.UserValidationUtil.passwordValidationUtil;
 
 public class SaveNewUserUsecase implements SaveNewUserInPort {
-
     private final UserOutPort repositoryOut;
 
     public SaveNewUserUsecase(UserOutPort repositoryOut) {
@@ -18,31 +20,29 @@ public class SaveNewUserUsecase implements SaveNewUserInPort {
     public void execute(UserDomain user) {
 
         userValidation(user);
+        user.setEmail(user.getEmail().trim().toLowerCase());
 
         repositoryOut.save(user);
     }
 
     public void userValidation(UserDomain user) {
-        if (user.getEmail().isBlank() || user.getEmail().isEmpty()) {
-            throw new NotAllFieldsFilledException("The email field must be filled");
-        }
-        if (user.getPassword().isBlank() || user.getPassword().isEmpty()) {
-            throw new NotAllFieldsFilledException("The password field must be filled");
-        }
-        if (user.getFirstName().isBlank() || user.getFirstName().isEmpty()) {
-            throw new NotAllFieldsFilledException("The first name field must be filled");
-        }
-        if (user.getLastName().isBlank() || user.getLastName().isEmpty()) {
-            throw new NotAllFieldsFilledException("The last name field must be filled");
-        }
+        emailValidationUtil(user.getEmail());
+        passwordValidationUtil(user.getPassword());
 
-        if (!user.getPassword().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
-            throw new NotAllFieldsFilledException("The password must be at least 8 characters and contain at least one uppercase, one special character and one lowercase letter");
-        }
+        requireNotBlank(user.getFirstName(), "First Name");
+        requireNotBlank(user.getLastName(), "Last Name");
+        requireNotBlank(user.getPhone(), "Phone");
 
         if (repositoryOut.findByEmail(user.getEmail()) != null) {
                 throw new UserAlreadyExistsException("An user with this e-mail already exists");
         }
-
     }
+
+
+    private void requireNotBlank(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new NotAllFieldsFilledException(fieldName + " must be filled");
+        }
+    }
+
 }
