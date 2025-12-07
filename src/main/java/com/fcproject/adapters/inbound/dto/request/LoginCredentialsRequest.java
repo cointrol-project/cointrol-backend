@@ -1,10 +1,10 @@
 package com.fcproject.adapters.inbound.dto.request;
 
-public class LoginRequestDTO {
+public class LoginCredentialsRequest {
     private String email;
     private String password;
 
-    public LoginRequestDTO(String email, String password) {
+    public LoginCredentialsRequest(String email, String password) {
         this.email = email;
         this.password = password;
     }

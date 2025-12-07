@@ -91,7 +91,7 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.firstName + " " + this.lastName;
+        return this.email; //Using email as sprint security identifier
     }
 
     @Override

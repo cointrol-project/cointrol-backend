@@ -1,24 +1,36 @@
 package com.fcproject.adapters.inbound.dto.response;
 
-public class AuthResponseDTO {
-    private String token;
+public class TokenResponse {
+    private String acessToken;
+    private boolean authenticated;
     private String refreshToken;
     private Long expiresIn;
     private String type = "Bearer";
 
-    public AuthResponseDTO(String token, String refreshToken, Long expiresIn, String type) {
-        this.token = token;
+    public TokenResponse(){}
+
+    public TokenResponse(String acessToken, boolean authenticated, String refreshToken, Long expiresIn, String type) {
+        this.acessToken = acessToken;
+        this.authenticated = authenticated;
         this.refreshToken = refreshToken;
         this.expiresIn = expiresIn;
         this.type = type;
     }
 
-    public String getToken() {
-        return token;
+    public String getAcessToken() {
+        return acessToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAcessToken(String acessToken) {
+        this.acessToken = acessToken;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated;
+    }
+
+    public void setAuthenticated(boolean authenticated) {
+        this.authenticated = authenticated;
     }
 
     public String getRefreshToken() {
