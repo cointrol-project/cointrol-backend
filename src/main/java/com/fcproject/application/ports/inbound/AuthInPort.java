@@ -1,5 +1,5 @@
 package com.fcproject.application.ports.inbound;
 
-public interface AuthUsecase {
+public interface AuthInPort {
     String login(String email, String password);
 }

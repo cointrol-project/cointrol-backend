@@ -4,7 +4,7 @@ import com.fcproject.application.core.domain.users.UserDomain;
 
 import java.util.UUID;
 
-public interface UserRepositoryOut {
+public interface UserOutPort {
         UserDomain findByEmail(String email);
 
         void save(UserDomain user);

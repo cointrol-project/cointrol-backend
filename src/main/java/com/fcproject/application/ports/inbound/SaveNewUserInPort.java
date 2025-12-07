@@ -2,6 +2,6 @@ package com.fcproject.application.ports.inbound;
 
 import com.fcproject.application.core.domain.users.UserDomain;
 
-public interface SaveNewUserUsecase {
+public interface SaveNewUserInPort {
     public void execute(UserDomain user);
 }

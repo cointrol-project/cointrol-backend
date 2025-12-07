@@ -2,8 +2,7 @@
 //
 //import com.fcproject.adapters.inbound.mapper.ObjectMapper;
 //import com.fcproject.adapters.outbound.entities.;
-//import com.fcproject.adapters.inbound.dto.UserDTO;
-//import com.fcproject.adapters.inbound.dto.UserPostDTO;
+
 //import com.fcproject.application.services.UserServices;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.HttpStatus;

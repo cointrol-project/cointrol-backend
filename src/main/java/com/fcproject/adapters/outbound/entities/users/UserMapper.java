@@ -23,20 +23,20 @@ public class UserMapper {
         );
     }
 
-    public UserEntity toEntity(UserDomain domain) {
-        if (domain == null) {
-            return null;
-        }
-
-        return new UserEntity(
-                domain.getId(),
-                domain.getFirstName(),
-                domain.getLastName(),
-                domain.getEmail(),
-                domain.getPhone(),
-                domain.getGender(),
-                domain.getDateOfBirth(),
-                domain.getPassword()
-        );
-    }
+//    public UserEntity toEntity(UserDomain domain) {
+//        if (domain == null) {
+//            return null;
+//        }
+//
+//        return new UserEntity(
+//                domain.getId(),
+//                domain.getFirstName(),
+//                domain.getLastName(),
+//                domain.getEmail(),
+//                domain.getPhone(),
+//                domain.getGender(),
+//                domain.getDateOfBirth(),
+//                domain.getPassword()
+//        );
+//    }
 }

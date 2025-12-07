@@ -1,4 +1,4 @@
-package com.fcproject.adapters.inbound.dto;
+package com.fcproject.adapters.inbound.dto.request;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

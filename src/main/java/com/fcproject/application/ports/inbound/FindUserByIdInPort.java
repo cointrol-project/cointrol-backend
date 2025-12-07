@@ -4,6 +4,6 @@ import com.fcproject.application.core.domain.users.UserDomain;
 
 import java.util.UUID;
 
-public interface FindUserByIdUsecase {
+public interface FindUserByIdInPort {
     UserDomain execute(UUID email);
 }

@@ -1,15 +1,16 @@
 package com.fcproject.application.core.usecases.users;
 
 import com.fcproject.application.core.domain.users.UserDomain;
-import com.fcproject.application.ports.outbound.UserRepositoryOut;
+import com.fcproject.application.ports.inbound.SaveNewUserInPort;
+import com.fcproject.application.ports.outbound.UserOutPort;
 import com.fcproject.infrastructure.exceptions.NotAllFieldsFilledException;
 import com.fcproject.infrastructure.exceptions.UserAlreadyExistsException;
 
-public class SaveNewUserUsecase implements com.fcproject.application.ports.inbound.SaveNewUserUsecase {
+public class SaveNewUserUsecase implements SaveNewUserInPort {
 
-    private final UserRepositoryOut repositoryOut;
+    private final UserOutPort repositoryOut;
 
-    public SaveNewUserUsecase(UserRepositoryOut repositoryOut) {
+    public SaveNewUserUsecase(UserOutPort repositoryOut) {
         this.repositoryOut = repositoryOut;
     }
 

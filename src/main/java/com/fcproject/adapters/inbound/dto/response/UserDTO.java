@@ -1,4 +1,4 @@
-package com.fcproject.adapters.inbound.dto;
+package com.fcproject.adapters.inbound.dto.response;
 
 import java.time.LocalDate;
 
